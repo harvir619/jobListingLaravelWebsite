@@ -40,11 +40,15 @@ Route::get('/', function () {
 //     dd($request->name.'   '.$request->city);
 // });
 
-Route::get('/listings/{id}',function($id){
-    return view('listing',
-    [
-       'listing'=>ModelsListing::find($id),
-      
-       ]
-);
+
+
+// Route::get('/listings/{id}',function($id){
+//     $listing =ModelsListing::find($id);
+//     if($listing){
+//         return view('listing',['listing'=>$listing,]);
+//     } else{ abort('404'); }});
+
+
+Route::get('/listings/{listing}',function(ModelsListing $listing){
+    return view('listing',['listing'=>$listing,]);
 });
