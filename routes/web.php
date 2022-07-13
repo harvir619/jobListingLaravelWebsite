@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\ListingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Listing as ModelsListing;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +15,20 @@ use App\Models\Listing as ModelsListing;
 |
 */
 //ALL Listings
-Route::get('/', function () {
-    return view('welcome',
-    [
-        'heading'=>'Latest Gigs',
-       'listings'=>ModelsListing::all(),
-      
-       ]
-);
-});
+Route::get('/', [ListingController::class,'index'] );
+
+
+Route::get('/listings/{listing}',[ListingController::class,'show']);
+
+
+
+
+
+
+
+
+
+
 
 // Route::get("/hello",function(){
 //     return response('<h1>Hello</h1>',200)
@@ -49,6 +54,4 @@ Route::get('/', function () {
 //     } else{ abort('404'); }});
 
 
-Route::get('/listings/{listing}',function(ModelsListing $listing){
-    return view('listing',['listing'=>$listing,]);
-});
+
