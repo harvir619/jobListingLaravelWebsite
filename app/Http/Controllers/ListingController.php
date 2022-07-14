@@ -13,7 +13,7 @@ class ListingController extends Controller
         return view('listings.index',
         [
             'heading'=>'Latest Gigs',
-           'listings'=>Listing::latest()->filter(request(['tag']))->get(),
+           'listings'=>Listing::latest()->filter(request(['tag','search']))->get(),
           
            ]
     );
@@ -22,4 +22,15 @@ class ListingController extends Controller
     public function show(Listing $listing) {
         return view('listings.show',['listing'=>$listing,]);
     }
+
+
+    //Show Create Form
+    public function create() {
+        return view('listings.create');
+    }
+
+        //Store Form Listing Data
+        public function store(Request $request) {
+            dd($request->all());
+        }
 }
