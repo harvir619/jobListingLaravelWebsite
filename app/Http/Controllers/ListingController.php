@@ -31,6 +31,14 @@ class ListingController extends Controller
 
         //Store Form Listing Data
         public function store(Request $request) {
-            dd($request->all());
+            $formFields = $request->validate([
+                'title'=>'required',
+                'company'=>['required',Rule::unique('listings','company')],
+                'location'=>'required',
+                'website'=>'required',
+                'email'=>['required','email'],
+                'tags'=>'required',
+
+            ])
         }
 }
