@@ -43,7 +43,7 @@ class ListingController extends Controller
 
             ]);
 
-            Listing::create($formFields);
+            Listing::create($formFields));
 
             return redirect('/');
         }
