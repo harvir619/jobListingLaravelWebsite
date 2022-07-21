@@ -16,7 +16,7 @@ class ListingController extends Controller
             'listings.index',
             [
                 'heading' => 'Latest Gigs',
-                'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(6),
+                'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(4),
 
             ]
         );
